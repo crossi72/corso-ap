@@ -13,9 +13,9 @@
 
 
 -- Dump della struttura del database corso_ap
-DROP DATABASE IF EXISTS `corso_ap`;
-CREATE DATABASE IF NOT EXISTS `corso_ap` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `corso_ap`;
+DROP DATABASE IF EXISTS `corso_ap_2019`;
+CREATE DATABASE IF NOT EXISTS `corso_ap_2019` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `corso_ap_2019`;
 
 -- Dump della struttura di tabella corso_ap.lavorazioni
 DROP TABLE IF EXISTS `lavorazioni`;
