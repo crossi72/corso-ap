@@ -13,6 +13,7 @@
 
 
 -- Dump della struttura del database corso_ap_2019
+DROP DATABASE IF EXISTS `corso_ap_2019`;
 CREATE DATABASE IF NOT EXISTS `corso_ap_2019` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `corso_ap_2019`;
 
@@ -74,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `passi` (
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=32754 DEFAULT CHARSET=utf8;
 
--- Dump dei dati della tabella corso_ap_2019.passi: ~16.235 rows (circa)
+-- Dump dei dati della tabella corso_ap_2019.passi: ~16.384 rows (circa)
 /*!40000 ALTER TABLE `passi` DISABLE KEYS */;
 INSERT INTO `passi` (`ID`, `programma`, `passo`, `lavorazione`, `durata`) VALUES
 	(1, 10, 1, 1, 73.2687),
