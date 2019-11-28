@@ -1,0 +1,2121 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/14/2019 12:23:34 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="PORTATILE"
+  DTS:CreatorName="PORTATILE\Rossi"
+  DTS:DTSID="{6D3E43E0-163A-4AB3-B710-86A54E953986}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3002.101"
+  DTS:LocaleID="1040"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{38563503-CEE6-48E0-8F4E-4EAF5EF49544}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MySQL localhost]"
+      DTS:CreationName="ODBC"
+      DTS:DTSID="{F9344986-230C-4E4C-A624-18D63F6EE28F}"
+      DTS:ObjectName="MySQL localhost">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Dsn=MySQL localhost;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[portatile\sqlexpress.corsoap]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{68671308-5A59-4770-A562-F82F1FEE9242}"
+      DTS:ObjectName="portatile\sqlexpress.corsoap">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=portatile\sqlexpress;Initial Catalog=corsoap;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\creazione lavorazioni"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Attività Esegui SQL"
+      DTS:DTSID="{568730bb-6f4a-4810-a805-f21144f39233}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="creazione lavorazioni"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{68671308-5A59-4770-A562-F82F1FEE9242}"
+          SQLTask:SqlStatementSource="BEGIN TRY&#xA; DROP TABLE lavorazioni&#xA;END TRY&#xA;BEGIN CATCH&#xA;END CATCH&#xA;GO&#xA;&#xA;CREATE TABLE [dbo].[lavorazioni](&#xA;&#x9;[ID] [int] IDENTITY(1,1) NOT NULL,&#xA;&#x9;[nome] [nvarchar](50) NULL,&#xA; CONSTRAINT [PK_lavorazioni] PRIMARY KEY CLUSTERED &#xA;(&#xA;&#x9;[ID] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\creazione macchine"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Attività Esegui SQL"
+      DTS:DTSID="{da522e00-68ca-4ef8-8c61-ec8cfd8ebe9f}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="creazione macchine"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="2">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{68671308-5A59-4770-A562-F82F1FEE9242}"
+          SQLTask:SqlStatementSource="BEGIN TRY&#xA; DROP TABLE macchine&#xA;END TRY&#xA;BEGIN CATCH&#xA;END CATCH&#xA;GO&#xA;&#xA;CREATE TABLE [dbo].[macchine](&#xA;&#x9;[ID] [int] IDENTITY(1,1) NOT NULL,&#xA;&#x9;[nome] [nvarchar](50) NULL,&#xA;&#x9;[tipo] [int] NULL,&#xA;&#x9;[note] [nvarchar](max) NULL,&#xA;&#x9;[seriale] [nvarchar](max) NULL,&#xA; CONSTRAINT [PK_macchine] PRIMARY KEY CLUSTERED &#xA;(&#xA;&#x9;[ID] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]&#xA;) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]&#xA;GO&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\creazione Passi"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Attività Esegui SQL"
+      DTS:DTSID="{dc8c5c82-f428-45fa-aa86-cf82b11e6409}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="creazione Passi"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{68671308-5A59-4770-A562-F82F1FEE9242}"
+          SQLTask:SqlStatementSource="BEGIN TRY&#xA; DROP TABLE passi&#xA;END TRY&#xA;BEGIN CATCH&#xA;END CATCH&#xA;GO&#xA;&#xA;CREATE TABLE [dbo].[passi](&#xA;&#x9;[ID] [int] IDENTITY(1,1) NOT NULL,&#xA;&#x9;[programma] [int] NULL,&#xA;&#x9;[passo] [int] NULL,&#xA;&#x9;[lavorazione] [int] NULL,&#xA; CONSTRAINT [PK_passi] PRIMARY KEY CLUSTERED &#xA;(&#xA;&#x9;[ID] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;GO&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\creazione programmi"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Attività Esegui SQL"
+      DTS:DTSID="{83e8826c-e487-4191-a1bb-dd050ee79423}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="creazione programmi"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="3">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{68671308-5A59-4770-A562-F82F1FEE9242}"
+          SQLTask:SqlStatementSource="BEGIN TRY&#xA; DROP TABLE programmi&#xA;END TRY&#xA;BEGIN CATCH&#xA;END CATCH&#xA;GO&#xA;&#xA;SET QUOTED_IDENTIFIER ON&#xA;GO&#xA;&#xA;CREATE TABLE [dbo].[programmi](&#xA;&#x9;[ID] [int] IDENTITY(1,1) NOT NULL,&#xA;&#x9;[nome] [nvarchar](50) NULL&#xA;) ON [PRIMARY]&#xA;GO&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\creazione Tipi"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Attività Esegui SQL"
+      DTS:DTSID="{A5505F46-33E8-4767-9EE7-BDCC03E72960}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="creazione Tipi"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="4">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{68671308-5A59-4770-A562-F82F1FEE9242}"
+          SQLTask:SqlStatementSource="BEGIN TRY&#xA;&#x9;DROP TABLE tipi&#xA;END TRY&#xA;BEGIN CATCH&#xA;END CATCH&#xA;GO&#xA;&#xA;CREATE TABLE [dbo].[tipi](&#xA;&#x9;[ID] [int] IDENTITY(1,1) NOT NULL,&#xA;&#x9;[tipo] [nvarchar](50) NULL,&#xA; CONSTRAINT [PK_Tipi] PRIMARY KEY CLUSTERED &#xA;(&#xA;&#x9;[ID] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]&#xA;) ON [PRIMARY]&#xA;GO&#xA;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\importazione lavorazioni"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
+      DTS:Description="Attività Flusso di dati"
+      DTS:DTSID="{27cbe753-fe4d-4194-812a-0cc9c802c841}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="importazione lavorazioni"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\importazione lavorazioni\Destinazione SQL Server"
+              componentClassID="Microsoft.SQLServerDestination"
+              contactInfo="Destinazione SQL Server;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tutti i diritti sono riservati; http://www.microsoft.com/sql/support;5"
+              description="Destinazione SQL Server"
+              name="Destinazione SQL Server"
+              version="5">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica la tabella codici della colonna da utilizzare quando l'origine dati non rende disponibili informazioni sulla tabella codici."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forza l'utilizzo del valore della proprietà DefaultCodePage per la descrizione di dati di tipo carattere."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.String"
+                  description="Nome dell'oggetto di database in cui copiare i dati."
+                  expressionType="Notify"
+                  name="BulkInsertTableName">[lavorazioni]</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifica che eventuali vincoli nell'oggetto di destinazione vengono controllati durante l'operazione di copia dei dati. Corrisponde all'opzione di inserimento bulk CHECK_CONSTRAINTS."
+                  name="BulkInsertCheckConstraints">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica il numero della prima riga da copiare. Corrisponde all'opzione di inserimento bulk FIRSTROW."
+                  expressionType="Notify"
+                  name="BulkInsertFirstRow">-1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifica che eventuali trigger di inserimento definiti nell'oggetto di destinazione verranno eseguiti durante la copia dei dati. Corrisponde all'opzione di inserimento bulk FIRE_TRIGGERS."
+                  name="BulkInsertFireTriggers">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica se i valori specificati per le colonne Identity verranno copiati nella destinazione. Se false, i valori delle colonne Identity verranno generati automaticamente nella destinazione. Corrisponde all'opzione di inserimento bulk KEEPIDENTITY."
+                  name="BulkInsertKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica se per le colonne con valori Null, tali valori verranno copiati nella destinazione. Se false, per le colonne con valori Null verranno inseriti i valori predefiniti corrispondenti nella destinazione. Applicabile solo se è abilitato il caricamento rapido."
+                  name="BulkInsertKeepNulls">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica il numero dell'ultima riga da copiare. Corrisponde all'opzione di inserimento bulk LASTROW."
+                  expressionType="Notify"
+                  name="BulkInsertLastRow">-1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica il numero massimo di errori di sintassi e di compilazione che possono verificarsi prima che l'operazione di copia dei dati venga annullata. Ogni riga che non può essere copiata viene ignorata e conteggiata come errore. Corrisponde all'opzione di inserimento bulk MAXERRORS."
+                  name="BulkInsertMaxErrors">-1</property>
+                <property
+                  dataType="System.String"
+                  description="Specifica come devono essere ordinati i dati da copiare. Corrisponde all'opzione di inserimento bulk ORDER."
+                  expressionType="Notify"
+                  name="BulkInsertOrder"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Imposta l'acquisizione di un blocco a livello di tabella per tutta la durata dell'operazione di copia dei dati. Corrisponde all'opzione di inserimento bulk TABLOCK."
+                  name="BulkInsertTablock">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica l'attesa in secondi prima che l'adattatore Destinazione SQL interrompa le operazioni nel caso non siano disponibili dati per l'inserimento. Un valore di timeout 0 indica che per l'adattatore Destinazione SQL non viene impostato alcun timeout."
+                  expressionType="Notify"
+                  name="Timeout">30</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica se vengono eseguiti commit durante l'inserimento dei dati. Il valore 0 indica che verrà eseguito un solo commit al termine dell'inserimento dei dati."
+                  name="MaxInsertCommitSize">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\importazione lavorazioni\Destinazione SQL Server.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[portatile\sqlexpress.corsoap]"
+                  connectionManagerRefId="Package.ConnectionManagers[portatile\sqlexpress.corsoap]"
+                  description="Connessione di run-time OLE DB utilizzata per accedere al database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\importazione lavorazioni\Destinazione SQL Server.Inputs[Input destinazione SQL Server]"
+                  hasSideEffects="true"
+                  name="Input destinazione SQL Server">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\importazione lavorazioni\Destinazione SQL Server.Inputs[Input destinazione SQL Server].Columns[ID]"
+                      cachedDataType="i4"
+                      cachedName="ID"
+                      externalMetadataColumnId="Package\importazione lavorazioni\Destinazione SQL Server.Inputs[Input destinazione SQL Server].ExternalColumns[ID]"
+                      lineageId="Package\importazione lavorazioni\ODBC Source.Outputs[ODBC Source Output].Columns[ID]" />
+                    <inputColumn
+                      refId="Package\importazione lavorazioni\Destinazione SQL Server.Inputs[Input destinazione SQL Server].Columns[nome]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="nome"
+                      externalMetadataColumnId="Package\importazione lavorazioni\Destinazione SQL Server.Inputs[Input destinazione SQL Server].ExternalColumns[nome]"
+                      lineageId="Package\importazione lavorazioni\ODBC Source.Outputs[ODBC Source Output].Columns[nome]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\importazione lavorazioni\Destinazione SQL Server.Inputs[Input destinazione SQL Server].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\importazione lavorazioni\Destinazione SQL Server.Inputs[Input destinazione SQL Server].ExternalColumns[nome]"
+                      dataType="wstr"
+                      length="50"
+                      name="nome" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\importazione lavorazioni\ODBC Source"
+              componentClassID="Attunity.SSISODBCSrc"
+              contactInfo="ODBC Source;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;7"
+              description="ODBC Source"
+              name="ODBC Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand">select *
+from corso_ap.lavorazioni</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod"
+                  typeConverter="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs"
+                  typeConverter="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs"
+                  typeConverter="BindCharColumnsAs">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\importazione lavorazioni\ODBC Source.Connections[ODBCConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MySQL localhost]"
+                  connectionManagerRefId="Package.ConnectionManagers[MySQL localhost]"
+                  description="The ODBC runtime connection"
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\importazione lavorazioni\ODBC Source.Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\importazione lavorazioni\ODBC Source.Outputs[ODBC Source Output].Columns[ID]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\importazione lavorazioni\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[ID]"
+                      lineageId="Package\importazione lavorazioni\ODBC Source.Outputs[ODBC Source Output].Columns[ID]"
+                      name="ID" />
+                    <outputColumn
+                      refId="Package\importazione lavorazioni\ODBC Source.Outputs[ODBC Source Output].Columns[nome]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\importazione lavorazioni\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[nome]"
+                      length="50"
+                      lineageId="Package\importazione lavorazioni\ODBC Source.Outputs[ODBC Source Output].Columns[nome]"
+                      name="nome" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\importazione lavorazioni\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\importazione lavorazioni\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[nome]"
+                      dataType="wstr"
+                      length="50"
+                      name="nome" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\importazione lavorazioni\ODBC Source.Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\importazione lavorazioni\ODBC Source.Outputs[ODBC Source Error Output].Columns[ID]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\importazione lavorazioni\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[ID]"
+                      lineageId="Package\importazione lavorazioni\ODBC Source.Outputs[ODBC Source Error Output].Columns[ID]"
+                      name="ID" />
+                    <outputColumn
+                      refId="Package\importazione lavorazioni\ODBC Source.Outputs[ODBC Source Error Output].Columns[nome]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\importazione lavorazioni\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[nome]"
+                      length="50"
+                      lineageId="Package\importazione lavorazioni\ODBC Source.Outputs[ODBC Source Error Output].Columns[nome]"
+                      name="nome" />
+                    <outputColumn
+                      refId="Package\importazione lavorazioni\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\importazione lavorazioni\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\importazione lavorazioni\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\importazione lavorazioni\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\importazione lavorazioni.Paths[ODBC Source Output]"
+              endId="Package\importazione lavorazioni\Destinazione SQL Server.Inputs[Input destinazione SQL Server]"
+              name="ODBC Source Output"
+              startId="Package\importazione lavorazioni\ODBC Source.Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\importazione macchine"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
+      DTS:Description="Attività Flusso di dati"
+      DTS:DTSID="{2D42213D-4E6C-4A48-8377-87774A967505}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="importazione macchine"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\importazione macchine\Destinazione SQL Server"
+              componentClassID="Microsoft.SQLServerDestination"
+              contactInfo="Destinazione SQL Server;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tutti i diritti sono riservati; http://www.microsoft.com/sql/support;5"
+              description="Destinazione SQL Server"
+              name="Destinazione SQL Server"
+              version="5">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica la tabella codici della colonna da utilizzare quando l'origine dati non rende disponibili informazioni sulla tabella codici."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forza l'utilizzo del valore della proprietà DefaultCodePage per la descrizione di dati di tipo carattere."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.String"
+                  description="Nome dell'oggetto di database in cui copiare i dati."
+                  expressionType="Notify"
+                  name="BulkInsertTableName">[macchine]</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifica che eventuali vincoli nell'oggetto di destinazione vengono controllati durante l'operazione di copia dei dati. Corrisponde all'opzione di inserimento bulk CHECK_CONSTRAINTS."
+                  name="BulkInsertCheckConstraints">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica il numero della prima riga da copiare. Corrisponde all'opzione di inserimento bulk FIRSTROW."
+                  expressionType="Notify"
+                  name="BulkInsertFirstRow">-1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifica che eventuali trigger di inserimento definiti nell'oggetto di destinazione verranno eseguiti durante la copia dei dati. Corrisponde all'opzione di inserimento bulk FIRE_TRIGGERS."
+                  name="BulkInsertFireTriggers">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica se i valori specificati per le colonne Identity verranno copiati nella destinazione. Se false, i valori delle colonne Identity verranno generati automaticamente nella destinazione. Corrisponde all'opzione di inserimento bulk KEEPIDENTITY."
+                  name="BulkInsertKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica se per le colonne con valori Null, tali valori verranno copiati nella destinazione. Se false, per le colonne con valori Null verranno inseriti i valori predefiniti corrispondenti nella destinazione. Applicabile solo se è abilitato il caricamento rapido."
+                  name="BulkInsertKeepNulls">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica il numero dell'ultima riga da copiare. Corrisponde all'opzione di inserimento bulk LASTROW."
+                  expressionType="Notify"
+                  name="BulkInsertLastRow">-1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica il numero massimo di errori di sintassi e di compilazione che possono verificarsi prima che l'operazione di copia dei dati venga annullata. Ogni riga che non può essere copiata viene ignorata e conteggiata come errore. Corrisponde all'opzione di inserimento bulk MAXERRORS."
+                  name="BulkInsertMaxErrors">-1</property>
+                <property
+                  dataType="System.String"
+                  description="Specifica come devono essere ordinati i dati da copiare. Corrisponde all'opzione di inserimento bulk ORDER."
+                  expressionType="Notify"
+                  name="BulkInsertOrder"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Imposta l'acquisizione di un blocco a livello di tabella per tutta la durata dell'operazione di copia dei dati. Corrisponde all'opzione di inserimento bulk TABLOCK."
+                  name="BulkInsertTablock">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica l'attesa in secondi prima che l'adattatore Destinazione SQL interrompa le operazioni nel caso non siano disponibili dati per l'inserimento. Un valore di timeout 0 indica che per l'adattatore Destinazione SQL non viene impostato alcun timeout."
+                  expressionType="Notify"
+                  name="Timeout">30</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica se vengono eseguiti commit durante l'inserimento dei dati. Il valore 0 indica che verrà eseguito un solo commit al termine dell'inserimento dei dati."
+                  name="MaxInsertCommitSize">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\importazione macchine\Destinazione SQL Server.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[portatile\sqlexpress.corsoap]"
+                  connectionManagerRefId="Package.ConnectionManagers[portatile\sqlexpress.corsoap]"
+                  description="Connessione di run-time OLE DB utilizzata per accedere al database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\importazione macchine\Destinazione SQL Server.Inputs[Input destinazione SQL Server]"
+                  hasSideEffects="true"
+                  name="Input destinazione SQL Server">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\importazione macchine\Destinazione SQL Server.Inputs[Input destinazione SQL Server].Columns[ID]"
+                      cachedDataType="i4"
+                      cachedName="ID"
+                      externalMetadataColumnId="Package\importazione macchine\Destinazione SQL Server.Inputs[Input destinazione SQL Server].ExternalColumns[ID]"
+                      lineageId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Output].Columns[ID]" />
+                    <inputColumn
+                      refId="Package\importazione macchine\Destinazione SQL Server.Inputs[Input destinazione SQL Server].Columns[nome]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="nome"
+                      externalMetadataColumnId="Package\importazione macchine\Destinazione SQL Server.Inputs[Input destinazione SQL Server].ExternalColumns[nome]"
+                      lineageId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Output].Columns[nome]" />
+                    <inputColumn
+                      refId="Package\importazione macchine\Destinazione SQL Server.Inputs[Input destinazione SQL Server].Columns[tipo]"
+                      cachedDataType="i4"
+                      cachedName="tipo"
+                      externalMetadataColumnId="Package\importazione macchine\Destinazione SQL Server.Inputs[Input destinazione SQL Server].ExternalColumns[tipo]"
+                      lineageId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Output].Columns[tipo]" />
+                    <inputColumn
+                      refId="Package\importazione macchine\Destinazione SQL Server.Inputs[Input destinazione SQL Server].Columns[note]"
+                      cachedDataType="nText"
+                      cachedName="note"
+                      externalMetadataColumnId="Package\importazione macchine\Destinazione SQL Server.Inputs[Input destinazione SQL Server].ExternalColumns[note]"
+                      lineageId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Output].Columns[note]" />
+                    <inputColumn
+                      refId="Package\importazione macchine\Destinazione SQL Server.Inputs[Input destinazione SQL Server].Columns[seriale]"
+                      cachedDataType="nText"
+                      cachedName="seriale"
+                      externalMetadataColumnId="Package\importazione macchine\Destinazione SQL Server.Inputs[Input destinazione SQL Server].ExternalColumns[seriale]"
+                      lineageId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Output].Columns[seriale]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\importazione macchine\Destinazione SQL Server.Inputs[Input destinazione SQL Server].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\importazione macchine\Destinazione SQL Server.Inputs[Input destinazione SQL Server].ExternalColumns[nome]"
+                      dataType="wstr"
+                      length="50"
+                      name="nome" />
+                    <externalMetadataColumn
+                      refId="Package\importazione macchine\Destinazione SQL Server.Inputs[Input destinazione SQL Server].ExternalColumns[tipo]"
+                      dataType="i4"
+                      name="tipo" />
+                    <externalMetadataColumn
+                      refId="Package\importazione macchine\Destinazione SQL Server.Inputs[Input destinazione SQL Server].ExternalColumns[note]"
+                      dataType="nText"
+                      name="note" />
+                    <externalMetadataColumn
+                      refId="Package\importazione macchine\Destinazione SQL Server.Inputs[Input destinazione SQL Server].ExternalColumns[seriale]"
+                      dataType="nText"
+                      name="seriale" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\importazione macchine\ODBC Source"
+              componentClassID="Attunity.SSISODBCSrc"
+              contactInfo="ODBC Source;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;7"
+              description="ODBC Source"
+              name="ODBC Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand">select *
+from corso_ap.macchine</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod"
+                  typeConverter="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs"
+                  typeConverter="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs"
+                  typeConverter="BindCharColumnsAs">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\importazione macchine\ODBC Source.Connections[ODBCConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MySQL localhost]"
+                  connectionManagerRefId="Package.ConnectionManagers[MySQL localhost]"
+                  description="The ODBC runtime connection"
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Output].Columns[ID]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[ID]"
+                      lineageId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Output].Columns[ID]"
+                      name="ID" />
+                    <outputColumn
+                      refId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Output].Columns[nome]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[nome]"
+                      length="50"
+                      lineageId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Output].Columns[nome]"
+                      name="nome" />
+                    <outputColumn
+                      refId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Output].Columns[tipo]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[tipo]"
+                      lineageId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Output].Columns[tipo]"
+                      name="tipo" />
+                    <outputColumn
+                      refId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Output].Columns[note]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[note]"
+                      lineageId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Output].Columns[note]"
+                      name="note" />
+                    <outputColumn
+                      refId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Output].Columns[seriale]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[seriale]"
+                      lineageId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Output].Columns[seriale]"
+                      name="seriale" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[nome]"
+                      dataType="wstr"
+                      length="50"
+                      name="nome" />
+                    <externalMetadataColumn
+                      refId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[tipo]"
+                      dataType="i4"
+                      name="tipo" />
+                    <externalMetadataColumn
+                      refId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[note]"
+                      dataType="nText"
+                      name="note" />
+                    <externalMetadataColumn
+                      refId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[seriale]"
+                      dataType="nText"
+                      name="seriale" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Error Output].Columns[ID]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[ID]"
+                      lineageId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Error Output].Columns[ID]"
+                      name="ID" />
+                    <outputColumn
+                      refId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Error Output].Columns[nome]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[nome]"
+                      length="50"
+                      lineageId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Error Output].Columns[nome]"
+                      name="nome" />
+                    <outputColumn
+                      refId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Error Output].Columns[tipo]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[tipo]"
+                      lineageId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Error Output].Columns[tipo]"
+                      name="tipo" />
+                    <outputColumn
+                      refId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Error Output].Columns[note]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[note]"
+                      lineageId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Error Output].Columns[note]"
+                      name="note" />
+                    <outputColumn
+                      refId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Error Output].Columns[seriale]"
+                      dataType="nText"
+                      externalMetadataColumnId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[seriale]"
+                      lineageId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Error Output].Columns[seriale]"
+                      name="seriale" />
+                    <outputColumn
+                      refId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\importazione macchine.Paths[ODBC Source Output]"
+              endId="Package\importazione macchine\Destinazione SQL Server.Inputs[Input destinazione SQL Server]"
+              name="ODBC Source Output"
+              startId="Package\importazione macchine\ODBC Source.Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\importazione passi"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
+      DTS:Description="Attività Flusso di dati"
+      DTS:DTSID="{e0097fb0-eaea-46b9-81ad-02fa22d9ef60}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="importazione passi"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\importazione passi\Destinazione SQL Server"
+              componentClassID="Microsoft.SQLServerDestination"
+              contactInfo="Destinazione SQL Server;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tutti i diritti sono riservati; http://www.microsoft.com/sql/support;5"
+              description="Destinazione SQL Server"
+              name="Destinazione SQL Server"
+              version="5">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica la tabella codici della colonna da utilizzare quando l'origine dati non rende disponibili informazioni sulla tabella codici."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forza l'utilizzo del valore della proprietà DefaultCodePage per la descrizione di dati di tipo carattere."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.String"
+                  description="Nome dell'oggetto di database in cui copiare i dati."
+                  expressionType="Notify"
+                  name="BulkInsertTableName">[passi]</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifica che eventuali vincoli nell'oggetto di destinazione vengono controllati durante l'operazione di copia dei dati. Corrisponde all'opzione di inserimento bulk CHECK_CONSTRAINTS."
+                  name="BulkInsertCheckConstraints">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica il numero della prima riga da copiare. Corrisponde all'opzione di inserimento bulk FIRSTROW."
+                  expressionType="Notify"
+                  name="BulkInsertFirstRow">-1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifica che eventuali trigger di inserimento definiti nell'oggetto di destinazione verranno eseguiti durante la copia dei dati. Corrisponde all'opzione di inserimento bulk FIRE_TRIGGERS."
+                  name="BulkInsertFireTriggers">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica se i valori specificati per le colonne Identity verranno copiati nella destinazione. Se false, i valori delle colonne Identity verranno generati automaticamente nella destinazione. Corrisponde all'opzione di inserimento bulk KEEPIDENTITY."
+                  name="BulkInsertKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica se per le colonne con valori Null, tali valori verranno copiati nella destinazione. Se false, per le colonne con valori Null verranno inseriti i valori predefiniti corrispondenti nella destinazione. Applicabile solo se è abilitato il caricamento rapido."
+                  name="BulkInsertKeepNulls">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica il numero dell'ultima riga da copiare. Corrisponde all'opzione di inserimento bulk LASTROW."
+                  expressionType="Notify"
+                  name="BulkInsertLastRow">-1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica il numero massimo di errori di sintassi e di compilazione che possono verificarsi prima che l'operazione di copia dei dati venga annullata. Ogni riga che non può essere copiata viene ignorata e conteggiata come errore. Corrisponde all'opzione di inserimento bulk MAXERRORS."
+                  name="BulkInsertMaxErrors">-1</property>
+                <property
+                  dataType="System.String"
+                  description="Specifica come devono essere ordinati i dati da copiare. Corrisponde all'opzione di inserimento bulk ORDER."
+                  expressionType="Notify"
+                  name="BulkInsertOrder"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Imposta l'acquisizione di un blocco a livello di tabella per tutta la durata dell'operazione di copia dei dati. Corrisponde all'opzione di inserimento bulk TABLOCK."
+                  name="BulkInsertTablock">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica l'attesa in secondi prima che l'adattatore Destinazione SQL interrompa le operazioni nel caso non siano disponibili dati per l'inserimento. Un valore di timeout 0 indica che per l'adattatore Destinazione SQL non viene impostato alcun timeout."
+                  expressionType="Notify"
+                  name="Timeout">30</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica se vengono eseguiti commit durante l'inserimento dei dati. Il valore 0 indica che verrà eseguito un solo commit al termine dell'inserimento dei dati."
+                  name="MaxInsertCommitSize">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\importazione passi\Destinazione SQL Server.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[portatile\sqlexpress.corsoap]"
+                  connectionManagerRefId="Package.ConnectionManagers[portatile\sqlexpress.corsoap]"
+                  description="Connessione di run-time OLE DB utilizzata per accedere al database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\importazione passi\Destinazione SQL Server.Inputs[Input destinazione SQL Server]"
+                  hasSideEffects="true"
+                  name="Input destinazione SQL Server">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\importazione passi\Destinazione SQL Server.Inputs[Input destinazione SQL Server].Columns[ID]"
+                      cachedDataType="i4"
+                      cachedName="ID"
+                      externalMetadataColumnId="Package\importazione passi\Destinazione SQL Server.Inputs[Input destinazione SQL Server].ExternalColumns[ID]"
+                      lineageId="Package\importazione passi\ODBC Source.Outputs[ODBC Source Output].Columns[ID]" />
+                    <inputColumn
+                      refId="Package\importazione passi\Destinazione SQL Server.Inputs[Input destinazione SQL Server].Columns[programma]"
+                      cachedDataType="i4"
+                      cachedName="programma"
+                      externalMetadataColumnId="Package\importazione passi\Destinazione SQL Server.Inputs[Input destinazione SQL Server].ExternalColumns[programma]"
+                      lineageId="Package\importazione passi\ODBC Source.Outputs[ODBC Source Output].Columns[programma]" />
+                    <inputColumn
+                      refId="Package\importazione passi\Destinazione SQL Server.Inputs[Input destinazione SQL Server].Columns[passo]"
+                      cachedDataType="i4"
+                      cachedName="passo"
+                      externalMetadataColumnId="Package\importazione passi\Destinazione SQL Server.Inputs[Input destinazione SQL Server].ExternalColumns[passo]"
+                      lineageId="Package\importazione passi\ODBC Source.Outputs[ODBC Source Output].Columns[passo]" />
+                    <inputColumn
+                      refId="Package\importazione passi\Destinazione SQL Server.Inputs[Input destinazione SQL Server].Columns[lavorazione]"
+                      cachedDataType="i4"
+                      cachedName="lavorazione"
+                      externalMetadataColumnId="Package\importazione passi\Destinazione SQL Server.Inputs[Input destinazione SQL Server].ExternalColumns[lavorazione]"
+                      lineageId="Package\importazione passi\ODBC Source.Outputs[ODBC Source Output].Columns[lavorazione]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\importazione passi\Destinazione SQL Server.Inputs[Input destinazione SQL Server].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\importazione passi\Destinazione SQL Server.Inputs[Input destinazione SQL Server].ExternalColumns[programma]"
+                      dataType="i4"
+                      name="programma" />
+                    <externalMetadataColumn
+                      refId="Package\importazione passi\Destinazione SQL Server.Inputs[Input destinazione SQL Server].ExternalColumns[passo]"
+                      dataType="i4"
+                      name="passo" />
+                    <externalMetadataColumn
+                      refId="Package\importazione passi\Destinazione SQL Server.Inputs[Input destinazione SQL Server].ExternalColumns[lavorazione]"
+                      dataType="i4"
+                      name="lavorazione" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\importazione passi\ODBC Source"
+              componentClassID="Attunity.SSISODBCSrc"
+              contactInfo="ODBC Source;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;7"
+              description="ODBC Source"
+              name="ODBC Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand">select *
+from corso_ap.passi</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod"
+                  typeConverter="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs"
+                  typeConverter="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs"
+                  typeConverter="BindCharColumnsAs">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\importazione passi\ODBC Source.Connections[ODBCConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MySQL localhost]"
+                  connectionManagerRefId="Package.ConnectionManagers[MySQL localhost]"
+                  description="The ODBC runtime connection"
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\importazione passi\ODBC Source.Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\importazione passi\ODBC Source.Outputs[ODBC Source Output].Columns[ID]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\importazione passi\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[ID]"
+                      lineageId="Package\importazione passi\ODBC Source.Outputs[ODBC Source Output].Columns[ID]"
+                      name="ID" />
+                    <outputColumn
+                      refId="Package\importazione passi\ODBC Source.Outputs[ODBC Source Output].Columns[programma]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\importazione passi\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[programma]"
+                      lineageId="Package\importazione passi\ODBC Source.Outputs[ODBC Source Output].Columns[programma]"
+                      name="programma" />
+                    <outputColumn
+                      refId="Package\importazione passi\ODBC Source.Outputs[ODBC Source Output].Columns[passo]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\importazione passi\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[passo]"
+                      lineageId="Package\importazione passi\ODBC Source.Outputs[ODBC Source Output].Columns[passo]"
+                      name="passo" />
+                    <outputColumn
+                      refId="Package\importazione passi\ODBC Source.Outputs[ODBC Source Output].Columns[lavorazione]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\importazione passi\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[lavorazione]"
+                      lineageId="Package\importazione passi\ODBC Source.Outputs[ODBC Source Output].Columns[lavorazione]"
+                      name="lavorazione" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\importazione passi\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\importazione passi\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[programma]"
+                      dataType="i4"
+                      name="programma" />
+                    <externalMetadataColumn
+                      refId="Package\importazione passi\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[passo]"
+                      dataType="i4"
+                      name="passo" />
+                    <externalMetadataColumn
+                      refId="Package\importazione passi\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[lavorazione]"
+                      dataType="i4"
+                      name="lavorazione" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\importazione passi\ODBC Source.Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\importazione passi\ODBC Source.Outputs[ODBC Source Error Output].Columns[ID]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\importazione passi\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[ID]"
+                      lineageId="Package\importazione passi\ODBC Source.Outputs[ODBC Source Error Output].Columns[ID]"
+                      name="ID" />
+                    <outputColumn
+                      refId="Package\importazione passi\ODBC Source.Outputs[ODBC Source Error Output].Columns[programma]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\importazione passi\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[programma]"
+                      lineageId="Package\importazione passi\ODBC Source.Outputs[ODBC Source Error Output].Columns[programma]"
+                      name="programma" />
+                    <outputColumn
+                      refId="Package\importazione passi\ODBC Source.Outputs[ODBC Source Error Output].Columns[passo]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\importazione passi\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[passo]"
+                      lineageId="Package\importazione passi\ODBC Source.Outputs[ODBC Source Error Output].Columns[passo]"
+                      name="passo" />
+                    <outputColumn
+                      refId="Package\importazione passi\ODBC Source.Outputs[ODBC Source Error Output].Columns[lavorazione]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\importazione passi\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[lavorazione]"
+                      lineageId="Package\importazione passi\ODBC Source.Outputs[ODBC Source Error Output].Columns[lavorazione]"
+                      name="lavorazione" />
+                    <outputColumn
+                      refId="Package\importazione passi\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\importazione passi\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\importazione passi\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\importazione passi\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\importazione passi.Paths[ODBC Source Output]"
+              endId="Package\importazione passi\Destinazione SQL Server.Inputs[Input destinazione SQL Server]"
+              name="ODBC Source Output"
+              startId="Package\importazione passi\ODBC Source.Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\importazione programmi"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
+      DTS:Description="Attività Flusso di dati"
+      DTS:DTSID="{d0d0fc48-4212-4edb-9643-d2354ed83ca7}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="importazione programmi"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\importazione programmi\Destinazione SQL Server"
+              componentClassID="Microsoft.SQLServerDestination"
+              contactInfo="Destinazione SQL Server;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tutti i diritti sono riservati; http://www.microsoft.com/sql/support;5"
+              description="Destinazione SQL Server"
+              name="Destinazione SQL Server"
+              version="5">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica la tabella codici della colonna da utilizzare quando l'origine dati non rende disponibili informazioni sulla tabella codici."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forza l'utilizzo del valore della proprietà DefaultCodePage per la descrizione di dati di tipo carattere."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.String"
+                  description="Nome dell'oggetto di database in cui copiare i dati."
+                  expressionType="Notify"
+                  name="BulkInsertTableName">[programmi]</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifica che eventuali vincoli nell'oggetto di destinazione vengono controllati durante l'operazione di copia dei dati. Corrisponde all'opzione di inserimento bulk CHECK_CONSTRAINTS."
+                  name="BulkInsertCheckConstraints">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica il numero della prima riga da copiare. Corrisponde all'opzione di inserimento bulk FIRSTROW."
+                  expressionType="Notify"
+                  name="BulkInsertFirstRow">-1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifica che eventuali trigger di inserimento definiti nell'oggetto di destinazione verranno eseguiti durante la copia dei dati. Corrisponde all'opzione di inserimento bulk FIRE_TRIGGERS."
+                  name="BulkInsertFireTriggers">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica se i valori specificati per le colonne Identity verranno copiati nella destinazione. Se false, i valori delle colonne Identity verranno generati automaticamente nella destinazione. Corrisponde all'opzione di inserimento bulk KEEPIDENTITY."
+                  name="BulkInsertKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica se per le colonne con valori Null, tali valori verranno copiati nella destinazione. Se false, per le colonne con valori Null verranno inseriti i valori predefiniti corrispondenti nella destinazione. Applicabile solo se è abilitato il caricamento rapido."
+                  name="BulkInsertKeepNulls">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica il numero dell'ultima riga da copiare. Corrisponde all'opzione di inserimento bulk LASTROW."
+                  expressionType="Notify"
+                  name="BulkInsertLastRow">-1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica il numero massimo di errori di sintassi e di compilazione che possono verificarsi prima che l'operazione di copia dei dati venga annullata. Ogni riga che non può essere copiata viene ignorata e conteggiata come errore. Corrisponde all'opzione di inserimento bulk MAXERRORS."
+                  name="BulkInsertMaxErrors">-1</property>
+                <property
+                  dataType="System.String"
+                  description="Specifica come devono essere ordinati i dati da copiare. Corrisponde all'opzione di inserimento bulk ORDER."
+                  expressionType="Notify"
+                  name="BulkInsertOrder"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Imposta l'acquisizione di un blocco a livello di tabella per tutta la durata dell'operazione di copia dei dati. Corrisponde all'opzione di inserimento bulk TABLOCK."
+                  name="BulkInsertTablock">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica l'attesa in secondi prima che l'adattatore Destinazione SQL interrompa le operazioni nel caso non siano disponibili dati per l'inserimento. Un valore di timeout 0 indica che per l'adattatore Destinazione SQL non viene impostato alcun timeout."
+                  expressionType="Notify"
+                  name="Timeout">30</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica se vengono eseguiti commit durante l'inserimento dei dati. Il valore 0 indica che verrà eseguito un solo commit al termine dell'inserimento dei dati."
+                  name="MaxInsertCommitSize">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\importazione programmi\Destinazione SQL Server.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[portatile\sqlexpress.corsoap]"
+                  connectionManagerRefId="Package.ConnectionManagers[portatile\sqlexpress.corsoap]"
+                  description="Connessione di run-time OLE DB utilizzata per accedere al database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\importazione programmi\Destinazione SQL Server.Inputs[Input destinazione SQL Server]"
+                  hasSideEffects="true"
+                  name="Input destinazione SQL Server">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\importazione programmi\Destinazione SQL Server.Inputs[Input destinazione SQL Server].Columns[ID]"
+                      cachedDataType="i4"
+                      cachedName="ID"
+                      externalMetadataColumnId="Package\importazione programmi\Destinazione SQL Server.Inputs[Input destinazione SQL Server].ExternalColumns[ID]"
+                      lineageId="Package\importazione programmi\ODBC Source.Outputs[ODBC Source Output].Columns[ID]" />
+                    <inputColumn
+                      refId="Package\importazione programmi\Destinazione SQL Server.Inputs[Input destinazione SQL Server].Columns[nome]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="nome"
+                      externalMetadataColumnId="Package\importazione programmi\Destinazione SQL Server.Inputs[Input destinazione SQL Server].ExternalColumns[nome]"
+                      lineageId="Package\importazione programmi\ODBC Source.Outputs[ODBC Source Output].Columns[nome]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\importazione programmi\Destinazione SQL Server.Inputs[Input destinazione SQL Server].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\importazione programmi\Destinazione SQL Server.Inputs[Input destinazione SQL Server].ExternalColumns[nome]"
+                      dataType="wstr"
+                      length="50"
+                      name="nome" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\importazione programmi\ODBC Source"
+              componentClassID="Attunity.SSISODBCSrc"
+              contactInfo="ODBC Source;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;7"
+              description="ODBC Source"
+              name="ODBC Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand">select *
+from corso_ap.programmi</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod"
+                  typeConverter="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs"
+                  typeConverter="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs"
+                  typeConverter="BindCharColumnsAs">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\importazione programmi\ODBC Source.Connections[ODBCConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MySQL localhost]"
+                  connectionManagerRefId="Package.ConnectionManagers[MySQL localhost]"
+                  description="The ODBC runtime connection"
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\importazione programmi\ODBC Source.Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\importazione programmi\ODBC Source.Outputs[ODBC Source Output].Columns[ID]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\importazione programmi\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[ID]"
+                      lineageId="Package\importazione programmi\ODBC Source.Outputs[ODBC Source Output].Columns[ID]"
+                      name="ID" />
+                    <outputColumn
+                      refId="Package\importazione programmi\ODBC Source.Outputs[ODBC Source Output].Columns[nome]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\importazione programmi\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[nome]"
+                      length="50"
+                      lineageId="Package\importazione programmi\ODBC Source.Outputs[ODBC Source Output].Columns[nome]"
+                      name="nome" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\importazione programmi\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\importazione programmi\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[nome]"
+                      dataType="wstr"
+                      length="50"
+                      name="nome" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\importazione programmi\ODBC Source.Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\importazione programmi\ODBC Source.Outputs[ODBC Source Error Output].Columns[ID]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\importazione programmi\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[ID]"
+                      lineageId="Package\importazione programmi\ODBC Source.Outputs[ODBC Source Error Output].Columns[ID]"
+                      name="ID" />
+                    <outputColumn
+                      refId="Package\importazione programmi\ODBC Source.Outputs[ODBC Source Error Output].Columns[nome]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\importazione programmi\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[nome]"
+                      length="50"
+                      lineageId="Package\importazione programmi\ODBC Source.Outputs[ODBC Source Error Output].Columns[nome]"
+                      name="nome" />
+                    <outputColumn
+                      refId="Package\importazione programmi\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\importazione programmi\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\importazione programmi\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\importazione programmi\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\importazione programmi.Paths[ODBC Source Output]"
+              endId="Package\importazione programmi\Destinazione SQL Server.Inputs[Input destinazione SQL Server]"
+              name="ODBC Source Output"
+              startId="Package\importazione programmi\ODBC Source.Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\importazione tipi"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
+      DTS:Description="Attività Flusso di dati"
+      DTS:DTSID="{7ce72e1b-00c3-4bb3-95c5-6ddac1f2238a}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="importazione tipi"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\importazione tipi\Destinazione SQL Server"
+              componentClassID="Microsoft.SQLServerDestination"
+              contactInfo="Destinazione SQL Server;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tutti i diritti sono riservati; http://www.microsoft.com/sql/support;5"
+              description="Destinazione SQL Server"
+              name="Destinazione SQL Server"
+              version="5">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica la tabella codici della colonna da utilizzare quando l'origine dati non rende disponibili informazioni sulla tabella codici."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forza l'utilizzo del valore della proprietà DefaultCodePage per la descrizione di dati di tipo carattere."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.String"
+                  description="Nome dell'oggetto di database in cui copiare i dati."
+                  expressionType="Notify"
+                  name="BulkInsertTableName">[tipi]</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifica che eventuali vincoli nell'oggetto di destinazione vengono controllati durante l'operazione di copia dei dati. Corrisponde all'opzione di inserimento bulk CHECK_CONSTRAINTS."
+                  name="BulkInsertCheckConstraints">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica il numero della prima riga da copiare. Corrisponde all'opzione di inserimento bulk FIRSTROW."
+                  expressionType="Notify"
+                  name="BulkInsertFirstRow">-1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifica che eventuali trigger di inserimento definiti nell'oggetto di destinazione verranno eseguiti durante la copia dei dati. Corrisponde all'opzione di inserimento bulk FIRE_TRIGGERS."
+                  name="BulkInsertFireTriggers">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica se i valori specificati per le colonne Identity verranno copiati nella destinazione. Se false, i valori delle colonne Identity verranno generati automaticamente nella destinazione. Corrisponde all'opzione di inserimento bulk KEEPIDENTITY."
+                  name="BulkInsertKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica se per le colonne con valori Null, tali valori verranno copiati nella destinazione. Se false, per le colonne con valori Null verranno inseriti i valori predefiniti corrispondenti nella destinazione. Applicabile solo se è abilitato il caricamento rapido."
+                  name="BulkInsertKeepNulls">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica il numero dell'ultima riga da copiare. Corrisponde all'opzione di inserimento bulk LASTROW."
+                  expressionType="Notify"
+                  name="BulkInsertLastRow">-1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica il numero massimo di errori di sintassi e di compilazione che possono verificarsi prima che l'operazione di copia dei dati venga annullata. Ogni riga che non può essere copiata viene ignorata e conteggiata come errore. Corrisponde all'opzione di inserimento bulk MAXERRORS."
+                  name="BulkInsertMaxErrors">-1</property>
+                <property
+                  dataType="System.String"
+                  description="Specifica come devono essere ordinati i dati da copiare. Corrisponde all'opzione di inserimento bulk ORDER."
+                  expressionType="Notify"
+                  name="BulkInsertOrder"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Imposta l'acquisizione di un blocco a livello di tabella per tutta la durata dell'operazione di copia dei dati. Corrisponde all'opzione di inserimento bulk TABLOCK."
+                  name="BulkInsertTablock">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica l'attesa in secondi prima che l'adattatore Destinazione SQL interrompa le operazioni nel caso non siano disponibili dati per l'inserimento. Un valore di timeout 0 indica che per l'adattatore Destinazione SQL non viene impostato alcun timeout."
+                  expressionType="Notify"
+                  name="Timeout">30</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifica se vengono eseguiti commit durante l'inserimento dei dati. Il valore 0 indica che verrà eseguito un solo commit al termine dell'inserimento dei dati."
+                  name="MaxInsertCommitSize">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\importazione tipi\Destinazione SQL Server.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[portatile\sqlexpress.corsoap]"
+                  connectionManagerRefId="Package.ConnectionManagers[portatile\sqlexpress.corsoap]"
+                  description="Connessione di run-time OLE DB utilizzata per accedere al database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\importazione tipi\Destinazione SQL Server.Inputs[Input destinazione SQL Server]"
+                  hasSideEffects="true"
+                  name="Input destinazione SQL Server">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\importazione tipi\Destinazione SQL Server.Inputs[Input destinazione SQL Server].Columns[ID]"
+                      cachedDataType="i4"
+                      cachedName="ID"
+                      externalMetadataColumnId="Package\importazione tipi\Destinazione SQL Server.Inputs[Input destinazione SQL Server].ExternalColumns[ID]"
+                      lineageId="Package\importazione tipi\ODBC Source.Outputs[ODBC Source Output].Columns[ID]" />
+                    <inputColumn
+                      refId="Package\importazione tipi\Destinazione SQL Server.Inputs[Input destinazione SQL Server].Columns[tipo]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="tipo"
+                      externalMetadataColumnId="Package\importazione tipi\Destinazione SQL Server.Inputs[Input destinazione SQL Server].ExternalColumns[tipo]"
+                      lineageId="Package\importazione tipi\ODBC Source.Outputs[ODBC Source Output].Columns[tipo]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\importazione tipi\Destinazione SQL Server.Inputs[Input destinazione SQL Server].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\importazione tipi\Destinazione SQL Server.Inputs[Input destinazione SQL Server].ExternalColumns[tipo]"
+                      dataType="wstr"
+                      length="50"
+                      name="tipo" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\importazione tipi\ODBC Source"
+              componentClassID="Attunity.SSISODBCSrc"
+              contactInfo="ODBC Source;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;7"
+              description="ODBC Source"
+              name="ODBC Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The name of the table to be fetched."
+                  expressionType="Notify"
+                  name="TableName"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand">select *
+from corso_ap.tipi</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows fetched per batch."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines the chunk size allocation for LOB columns"
+                  expressionType="Notify"
+                  name="LobChunkSize">32768</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                  expressionType="Notify"
+                  name="ExposeCharColumnsAsUnicode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                  expressionType="Notify"
+                  name="StatementTimeout">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The code page to use when code page information is unavailable from the data source."
+                  expressionType="Notify"
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The method used for fetching data."
+                  expressionType="Notify"
+                  name="FetchMethod"
+                  typeConverter="FetchMethod">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The ODBC C data type for binding numeric data."
+                  expressionType="Notify"
+                  name="BindNumericAs"
+                  typeConverter="BindNumericAs">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                  expressionType="Notify"
+                  name="BindCharColumnsAs"
+                  typeConverter="BindCharColumnsAs">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\importazione tipi\ODBC Source.Connections[ODBCConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MySQL localhost]"
+                  connectionManagerRefId="Package.ConnectionManagers[MySQL localhost]"
+                  description="The ODBC runtime connection"
+                  name="ODBCConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\importazione tipi\ODBC Source.Outputs[ODBC Source Output]"
+                  errorRowDisposition="FailComponent"
+                  name="ODBC Source Output"
+                  truncationRowDisposition="FailComponent">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\importazione tipi\ODBC Source.Outputs[ODBC Source Output].Columns[ID]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\importazione tipi\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[ID]"
+                      lineageId="Package\importazione tipi\ODBC Source.Outputs[ODBC Source Output].Columns[ID]"
+                      name="ID" />
+                    <outputColumn
+                      refId="Package\importazione tipi\ODBC Source.Outputs[ODBC Source Output].Columns[tipo]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\importazione tipi\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[tipo]"
+                      length="50"
+                      lineageId="Package\importazione tipi\ODBC Source.Outputs[ODBC Source Output].Columns[tipo]"
+                      name="tipo" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\importazione tipi\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[ID]"
+                      dataType="i4"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\importazione tipi\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[tipo]"
+                      dataType="wstr"
+                      length="50"
+                      name="tipo" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\importazione tipi\ODBC Source.Outputs[ODBC Source Error Output]"
+                  isErrorOut="true"
+                  name="ODBC Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\importazione tipi\ODBC Source.Outputs[ODBC Source Error Output].Columns[ID]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\importazione tipi\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[ID]"
+                      lineageId="Package\importazione tipi\ODBC Source.Outputs[ODBC Source Error Output].Columns[ID]"
+                      name="ID" />
+                    <outputColumn
+                      refId="Package\importazione tipi\ODBC Source.Outputs[ODBC Source Error Output].Columns[tipo]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\importazione tipi\ODBC Source.Outputs[ODBC Source Output].ExternalColumns[tipo]"
+                      length="50"
+                      lineageId="Package\importazione tipi\ODBC Source.Outputs[ODBC Source Error Output].Columns[tipo]"
+                      name="tipo" />
+                    <outputColumn
+                      refId="Package\importazione tipi\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\importazione tipi\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\importazione tipi\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\importazione tipi\ODBC Source.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\importazione tipi.Paths[ODBC Source Output]"
+              endId="Package\importazione tipi\Destinazione SQL Server.Inputs[Input destinazione SQL Server]"
+              name="ODBC Source Output"
+              startId="Package\importazione tipi\ODBC Source.Outputs[ODBC Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Vincolo]"
+      DTS:CreationName=""
+      DTS:DTSID="{A71E2189-9590-4A49-B580-F76D9CD318C4}"
+      DTS:From="Package\creazione Tipi"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Vincolo"
+      DTS:To="Package\importazione tipi" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Vincolo 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{5DC9AF8C-89B5-4692-BFD4-87C64032985A}"
+      DTS:From="Package\creazione programmi"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Vincolo 1"
+      DTS:To="Package\importazione programmi" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Vincolo 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{379284FC-CE1C-4E90-A6EC-EA3D854CEA10}"
+      DTS:From="Package\creazione Passi"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Vincolo 2"
+      DTS:To="Package\importazione passi" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Vincolo 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{33FD0655-32C7-469F-803F-B3FE3EB5E278}"
+      DTS:From="Package\creazione macchine"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Vincolo 3"
+      DTS:To="Package\importazione macchine" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Vincolo 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{CC203E4A-D0B5-4E72-9FB6-6086D7C917AB}"
+      DTS:From="Package\creazione lavorazioni"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Vincolo 4"
+      DTS:To="Package\importazione lavorazioni" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Questa sezione CDATA contiene le informazioni sul layout del pacchetto e include informazioni quali coordinate (x,y), larghezza e altezza.-->
+<!--Se si modifica manualmente la sezione e si commette un errore, è possibile eliminarla. -->
+<!--Sarà comunque possibile caricare manualmente il pacchetto, ma le informazioni precedenti sul layout verranno perse e gli elementi verranno nuovamente disposti nell'area di progettazione all'interno dell'apposita finestra.-->
+<Objects
+  Version="8">
+  <!--Ogni nodo seguente conterrà proprietà che non influiscono sul comportamento di runtime.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="182,42"
+          Id="Package\creazione lavorazioni"
+          TopLeft="141.5,67" />
+        <NodeLayout
+          Size="148,42"
+          Id="Package\creazione macchine"
+          TopLeft="394.5,67" />
+        <NodeLayout
+          Size="148,42"
+          Id="Package\creazione Passi"
+          TopLeft="623.25,67" />
+        <NodeLayout
+          Size="182,42"
+          Id="Package\creazione programmi"
+          TopLeft="850,67" />
+        <NodeLayout
+          Size="148,42"
+          Id="Package\creazione Tipi"
+          TopLeft="1073.25,67" />
+        <NodeLayout
+          Size="198,42"
+          Id="Package\importazione lavorazioni"
+          TopLeft="133.5,180" />
+        <NodeLayout
+          Size="192,42"
+          Id="Package\importazione macchine"
+          TopLeft="372.5,180" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\importazione passi"
+          TopLeft="611.75,180" />
+        <NodeLayout
+          Size="198,42"
+          Id="Package\importazione programmi"
+          TopLeft="842,180" />
+        <NodeLayout
+          Size="159,42"
+          Id="Package\importazione tipi"
+          TopLeft="1067.75,180" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Vincolo]"
+          TopLeft="1147.25,109">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,71"
+              Start="0,0"
+              End="0,63.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,63.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Vincolo 1]"
+          TopLeft="941,109">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,71"
+              Start="0,0"
+              End="0,63.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,63.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Vincolo 2]"
+          TopLeft="697.25,109">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,71"
+              Start="0,0"
+              End="0,63.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,63.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Vincolo 3]"
+          TopLeft="468.5,109">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,71"
+              Start="0,0"
+              End="0,63.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,63.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Vincolo 4]"
+          TopLeft="232.5,109">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,71"
+              Start="0,0"
+              End="0,63.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,63.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\importazione lavorazioni">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="149,42"
+          Id="Package\importazione lavorazioni\ODBC Source"
+          TopLeft="254,132" />
+        <NodeLayout
+          Size="203,42"
+          Id="Package\importazione lavorazioni\Destinazione SQL Server"
+          TopLeft="220,285" />
+        <EdgeLayout
+          Id="Package\importazione lavorazioni.Paths[ODBC Source Output]"
+          TopLeft="325,174">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,111"
+              Start="0,0"
+              End="0,103.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,103.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\importazione lavorazioni\Destinazione SQL Server">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\importazione macchine">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="203,42"
+          Id="Package\importazione macchine\Destinazione SQL Server"
+          TopLeft="224,304" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\importazione macchine\ODBC Source"
+          TopLeft="254,132" />
+        <EdgeLayout
+          Id="Package\importazione macchine.Paths[ODBC Source Output]"
+          TopLeft="327,174">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,130"
+              Start="0,0"
+              End="0,122.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,122.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\importazione macchine\Destinazione SQL Server">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\importazione passi">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="149,42"
+          Id="Package\importazione passi\ODBC Source"
+          TopLeft="254,132" />
+        <NodeLayout
+          Size="203,42"
+          Id="Package\importazione passi\Destinazione SQL Server"
+          TopLeft="231,289" />
+        <EdgeLayout
+          Id="Package\importazione passi.Paths[ODBC Source Output]"
+          TopLeft="330.5,174">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,115"
+              Start="0,0"
+              End="0,107.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,107.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\importazione passi\Destinazione SQL Server">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\importazione programmi">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="149,42"
+          Id="Package\importazione programmi\ODBC Source"
+          TopLeft="254,132" />
+        <NodeLayout
+          Size="203,42"
+          Id="Package\importazione programmi\Destinazione SQL Server"
+          TopLeft="224.5,272.5" />
+        <EdgeLayout
+          Id="Package\importazione programmi.Paths[ODBC Source Output]"
+          TopLeft="327.25,174">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,98.5"
+              Start="0,0"
+              End="0,91">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,91" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\importazione programmi\Destinazione SQL Server">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\importazione tipi">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="203,42"
+          Id="Package\importazione tipi\Destinazione SQL Server"
+          TopLeft="226.5,259" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\importazione tipi\ODBC Source"
+          TopLeft="253.5,132" />
+        <EdgeLayout
+          Id="Package\importazione tipi.Paths[ODBC Source Output]"
+          TopLeft="328,174">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,85"
+              Start="0,0"
+              End="0,77.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,77.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\importazione tipi\Destinazione SQL Server">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
